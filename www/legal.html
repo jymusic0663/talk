@@ -1,74 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-		/>
-		<meta name="description" content="Talk - A free video call app for the web." />
-		<meta
-			name="keywords"
-			content="group video chat, video communication, multiparty video chat, video chat, webrtc, peer to peer, p2p"
-		/>
-		<meta name="application-name" content="Talk" />
-		<link rel="icon" href="favicon.png" type="image/png" />
-		<link rel="stylesheet" href="home.css" />
-		<title>Talk - A free video call app for the web</title>
-		<style>
-			#wrapper {
-				color: #212121;
-				width: 100%;
-				max-width: 768px;
-				padding: 10px;
-				box-sizing: border-box;
-				margin: 1rem auto;
-			}
-			#wrapper a {
-				color: #212121;
-			}
-			#logo img {
-				position: relative;
-				left: -2px;
-			}
-		</style>
-		<!-- ANALYTICS_SCRIPT -->
-	</head>
+<html lang="zh">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport"
+		content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="description" content="一个免注册、免下载，免费的、对等加密的、开源的网页端视频通话。" />
+	<meta name="keywords" content="多人视频通话, 视频聊天, webrtc, 点对点, p2p" />
+	<meta name="application-name" content="Talk" />
+	<link rel="icon" href="favicon.png" type="image/png" />
+	<link rel="stylesheet" href="home.css" />
+	<title>Talk - 网页视频通话器</title>
+	<style>
+		#wrapper {
+			color: #212121;
+			width: 100%;
+			max-width: 768px;
+			padding: 10px;
+			box-sizing: border-box;
+			margin: 1rem auto;
+		}
 
-	<body>
-		<div id="wrapper">
-			<header>
-				<div id="logo">
-					<a href="/"><img src="favicon.svg" style="width: 2rem" /></a>
-				</div>
-			</header>
-			<h3>Legal</h3>
-			<p>
-				This service is provided under an "as is" condition. It might change or will be discontinued without prior
-				notice. The maker of this service can't be held liable in any way for any reason.
-			</p>
-			<h3>Privacy policy</h3>
-			<p>
-				We limit ourselves to collect the smallest amount of user data that we need to create a seamless experience when
-				using Talk. This data includes
-				<a href="https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate" target="_blank">
-					RTCICECandidates
-				</a>
-				&
-				<a href="https://developer.mozilla.org/en-US/docs/Web/API/RTCSessionDescription" target="_blank">
-					RTCSessionDescription
-				</a>
-				which is needed to establish the video call using WebRTC, your name & chat for a messaging experience inside the
-				app. RTCICECandidates & RTCSessionDescription is not stored in any persistent database, it's removed from the
-				server as soon as the user leaves the call by closing the browser window. Your chat messages, video & audio are
-				all 100% peer-to-peer, meaning they never touch our server at all. We also collect your name which will be
-				stored on your browser and used to identify the chat messages you send.
-			</p>
-			<p>
-				Talk is purely peer-to-peer, which means the user\'s video & audio is not sent to our server at all. We also use
-				Cabin Analytics to track aggregated usage statistics in order to improve our service.
-			</p>
-			<p>The makers of Talk have no intention of using personally or selling any of the above-mentioned data.</p>
-		</div>
-	</body>
+		#wrapper a {
+			color: #212121;
+		}
+
+		#logo img {
+			position: relative;
+			left: -2px;
+		}
+	</style>
+	<!-- ANALYTICS_SCRIPT -->
+</head>
+
+<body>
+	<div id="wrapper">
+		<header>
+			<div id="logo">
+				<a href="/"><img src="favicon.svg" style="width: 2rem" /></a>
+			</div>
+		</header>
+		<h3>隐私协议</h3>
+		<p>
+			我们只收集必要的少量的用户数据，用来方便用户无缝体验网页视频通话。这些数据包括使用 WebRTC建立视频通话所需的<a href="https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate" target="_blank">RTCICECandidates</a>和<a href="https://developer.mozilla.org/en-US/docs/Web/API/RTCSessionDescription" target="_blank">RTCSessionDescription</a>，而您的昵称会存储在您的浏览器缓存上，用于识别您发送的聊天信息。同时昵称与通话内容、视频、音频不会保存在任何持久性数据库中，您的聊天内容、视频和音频是通过点对点进行传输的，所以一旦关闭浏览器窗口离开通话房间，即断开，所以您的个人数据不会接触我们的服务器。
+		</p>
+		<p>
+			本服务纯粹使用点对点的通话形式，这意味着您的视频和音频不会发送到我们的服务器。我们还使用服务程序运行状态分析，用于跟踪汇总的使用统计数据，以改善我们的服务。
+		</p>
+	</div>
+</body>
 </html>

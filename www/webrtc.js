@@ -265,7 +265,7 @@ function setupLocalMedia(callback, errorback) {
 		})
 		.catch(() => {
 			/* user denied access to a/v */
-			alert("This site will not work without camera/microphone access.");
+			alert("没有摄像头/麦克风访问权限，此服务将无法运行");
 			if (errorback) errorback();
 		});
 }
@@ -295,9 +295,9 @@ const getVideoElement = (peerId, isLocal) => {
 	peerNameEle.setAttribute("id", peerId + "_videoPeerName");
 	peerNameEle.className = "videoPeerName";
 	if (isLocal) {
-		peerNameEle.innerHTML = `${App.name ?? ""} (you)`;
+		peerNameEle.innerHTML = `${App.name ?? ""} (我)`;
 	} else {
-		peerNameEle.innerHTML = "Unnamed";
+		peerNameEle.innerHTML = "未命名";
 	}
 
 	const fullScreenBtn = document.createElement("button");

@@ -194,7 +194,7 @@ input {
 }
 #intro .footer {
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-end;
 }
 #intro .footer button {
 	background: #6549d5;

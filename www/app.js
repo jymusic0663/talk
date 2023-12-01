@@ -44,7 +44,7 @@ const App = Vue.createApp({
 		copyURL() {
 			navigator.clipboard.writeText(this.roomLink).then(
 				() => {
-					this.copyText = "Copied 👍";
+					this.copyText = "已复制 👍";
 					setTimeout(() => (this.copyText = ""), 3000);
 				},
 				(err) => console.error(err)
@@ -116,7 +116,7 @@ const App = Vue.createApp({
 					} catch (e) {}			
 				})
 				.catch((e) => {
-					alert("Unable to share screen. Please use a supported browser.");
+					alert("当前浏览器无法共享屏幕。请使用其他支持的浏览器。");
 					console.error(e);
 				});
 		},
@@ -132,7 +132,7 @@ const App = Vue.createApp({
 					document.getElementById(this.peerId + "_videoEnabled").style.visibility = value ? "hidden" : "visible";
 					break;
 				case "peerName":
-					document.getElementById(this.peerId + "_videoPeerName").innerHTML = value + " (you)";
+					document.getElementById(this.peerId + "_videoPeerName").innerHTML = value + " (我)";
 					break;
 				default:
 					break;
@@ -160,7 +160,7 @@ const App = Vue.createApp({
 				})
 				.catch((err) => {
 					console.log(err);
-					alert("Error while swaping camera");
+					alert("切换摄像头失败");
 				});
 		},
 		changeMicrophone(deviceId) {
@@ -183,7 +183,7 @@ const App = Vue.createApp({
 				})
 				.catch((err) => {
 					console.log(err);
-					alert("Error while swaping microphone");
+					alert("切换麦克风失败");
 				});
 		},
 		sanitizeString(str) {
@@ -222,7 +222,7 @@ const App = Vue.createApp({
 				composeElement.textContent = "";
 				composeElement.blur;
 			} else {
-				alert("No peers in the room");
+				alert("房间内没有其他人");
 			}
 		},
 		sendDataMessage(key, value) {
@@ -275,13 +275,11 @@ const App = Vue.createApp({
 		},
 		formatDate(dateString) {
 			const date = new Date(dateString);
-			const hours = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
+			const hours = date.getHours(); // > 12 ? date.getHours() - 12 : date.getHours();
 			return (
 				(hours < 10 ? "0" + hours : hours) +
 				":" +
-				(date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()) +
-				" " +
-				(date.getHours() >= 12 ? "PM" : "AM")
+				(date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()) //+ " " + (date.getHours() >= 12 ? "PM" : "AM")
 			);
 		},
 		setStyle(key, value) {

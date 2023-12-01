@@ -1,7 +1,7 @@
 {
 	"name": "talk",
 	"version": "4.0.0",
-	"description": "A free, peer-to-peer, encrypted, open-source video calling for the web.",
+	"description": "一个免注册、免下载，免费的、对等加密的、开源的网页端视频通话。",
 	"main": "start.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
