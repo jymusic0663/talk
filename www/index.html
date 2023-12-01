@@ -30,10 +30,10 @@
 			<div class="flex">
 				<div id="roomurl">
 					<!--  pattern="[a-zA-Z0-9]{8}" -->
-					<span>talk://</span><input type="text" placeholder="房间号" minlength="8" maxlength="16" v-model="roomId"
+					<span>talk://</span><input type="text" placeholder="房间号" minlength="4" maxlength="16" pattern="[\S]{4,16}" v-model="roomId"
 						v-on:keydown.enter="goToRoom" />
 				</div>
-				<a v-bind:href="'/'+roomId" class="button">创建房间</a>
+				<a href="javascript:void(0)" class="button"  v-on:click="goToRoom">创建房间</a>
 			</div>
 
 			<p><a href="javascript:void(0)" v-on:click="generateRandomRoomId">随机生成房间</a></p>

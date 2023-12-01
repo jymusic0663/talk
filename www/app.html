@@ -36,7 +36,7 @@
 				<p>开启前，建议填写您的昵称，方便房间内其他人员识别</p>
 				<p>
 					<label v-bind:class="(nameError && !name ? 'red' : '')">请输入您的昵称</label>
-					<input type="text" v-model="name" v-on:keyup="updateName" placeholder="在这里输入昵称" />
+					<input type="text" v-model="name" v-on:keyup="updateName" placeholder="在这里输入昵称" maxlength="16" />
 				</p>
 				<br />
 
@@ -49,8 +49,9 @@
 				<div id="callFeedback">
 					<div class="bold">您已退出视频通话，此时您可关闭此窗口了。</div>
 					<br />
+					<a href="/">点击返回主页</a>
 
-					<div id="feedbackWrap">
+					<div id="feedbackWrap" v-if="cabin">
 						<div class="question italic">您觉得本次视频通话质量如何?</div>
 						<div class="thankYou bold">感谢您的反馈</div>
 						<div id="feedbackButtons">

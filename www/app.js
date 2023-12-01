@@ -298,6 +298,9 @@ const App = Vue.createApp({
 				peers[peer_id].close();
 			}
 			this.callEnded = true;
+			setTimeout(function(){
+				window.location = "/";
+			},1500)
 		},
 	},
 }).mount("#app");

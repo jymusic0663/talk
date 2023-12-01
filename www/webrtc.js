@@ -8,8 +8,9 @@ const ICE_SERVERS = [
 ];
 
 const APP_URL = (() => {
-	const protocol = "http" + (location.hostname == "localhost" ? "" : "s") + "://";
-	return protocol + location.hostname + (location.hostname == "localhost" ? ":3000" : "");
+	//const protocol = "http" + (location.hostname == "localhost" ? "" : "s") + "://";
+	//return protocol + location.hostname + (location.hostname == "localhost" ? ":3000" : "");
+	return location.origin;
 })();
 
 const ROOM_ID = (() => {
@@ -17,7 +18,9 @@ const ROOM_ID = (() => {
 	if (!roomName) {
 		roomName = Math.random().toString(36).substr(2, 6);
 		window.history.pushState({ url: `${APP_URL}/${roomName}` }, roomName, `${APP_URL}/${roomName}`);
-	}
+	}/* else if(/[\S]{4,16}/.test(roomName)){
+		window.location = "/";
+	} */
 	return roomName;
 })();
 
@@ -65,6 +68,13 @@ function initiateCall() {
 			isIpad: App.isIpad,
 			isDesktop: App.isDesktop,
 		};
+
+		if(!navigator.mediaDevices){
+			userData.videoEnabled = false;
+			userData.audioEnabled = false;
+			App.videoEnabled = false;
+			App.audioEnabled = false;
+		}
 
 		if (localMediaStream) joinChatChannel(ROOM_ID, userData);
 		else
@@ -248,26 +258,37 @@ function setupLocalMedia(callback, errorback) {
 		if (callback) callback();
 		return;
 	}
+	if(!navigator.mediaDevices){
+		/*if (callback) callback();
 
-	navigator.mediaDevices
-		.getUserMedia({ audio: USE_AUDIO, video: USE_VIDEO })
-		.then((stream) => {
-			localMediaStream = stream;
-			const localMedia = getVideoElement(App.peerId, true);
-			attachMediaStream(localMedia, stream);
-			resizeVideos();
-			if (callback) callback();
+		App.videoDevices = {};
+		App.audioDevices = {};*/
+		alert("没有摄像头/麦克风访问权限，请使用https访问");
+		if (errorback) errorback();
+		setTimeout(function(){
+			location.href = "/";
+		},1500);
+	}else{
+		navigator.mediaDevices
+			.getUserMedia({ audio: USE_AUDIO, video: USE_VIDEO })
+			.then((stream) => {
+				localMediaStream = stream;
+				const localMedia = getVideoElement(App.peerId, true);
+				attachMediaStream(localMedia, stream);
+				resizeVideos();
+				if (callback) callback();
 
-			navigator.mediaDevices.enumerateDevices().then((devices) => {
-				App.videoDevices = devices.filter((device) => device.kind === "videoinput" && device.deviceId !== "default");
-				App.audioDevices = devices.filter((device) => device.kind === "audioinput" && device.deviceId !== "default");
+				navigator.mediaDevices.enumerateDevices().then((devices) => {
+					App.videoDevices = devices.filter((device) => device.kind === "videoinput" && device.deviceId !== "default");
+					App.audioDevices = devices.filter((device) => device.kind === "audioinput" && device.deviceId !== "default");
+				});
+			})
+			.catch(() => {
+				/* user denied access to a/v */
+				alert("没有摄像头/麦克风访问权限，此服务将无法运行");
+				if (errorback) errorback();
 			});
-		})
-		.catch(() => {
-			/* user denied access to a/v */
-			alert("没有摄像头/麦克风访问权限，此服务将无法运行");
-			if (errorback) errorback();
-		});
+	}
 }
 
 const getVideoElement = (peerId, isLocal) => {
@@ -329,7 +350,7 @@ const getVideoElement = (peerId, isLocal) => {
 };
 
 const resizeVideos = () => {
-	const numToString = ["", "one", "two", "three", "four", "five", "six"];
+	const numToString = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
 	const videos = document.querySelectorAll("#videos .video");
 	document.querySelectorAll("#videos .video").forEach((v) => {
 		v.className = "video " + numToString[videos.length];
