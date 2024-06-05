@@ -43,6 +43,8 @@ npm start
 
 ## docker-compose
 
+`docker build --no-cache -t vasanthv-talk-cn .`
+
 支持 docker 运行，执行 `docker compose up` 即可启动容器
 
 ### LICENSE

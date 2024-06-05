@@ -38,7 +38,8 @@ const App = Vue.createApp({
 				this.callInitiated = true;
 				window.initiateCall();
 			} else {
-				this.nameError = true;
+				this.name = "匿名" + Math.random().toString(36).substr(2, 4);;
+				//this.nameError = true;
 			}
 		},
 		copyURL() {
