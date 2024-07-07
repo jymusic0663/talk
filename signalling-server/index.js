@@ -6,6 +6,7 @@
 
 const express = require("express");
 const http = require("http");
+const path = require("path");
 const app = express();
 const server = http.createServer(app);
 const io = require("socket.io")(server, {
@@ -13,6 +14,7 @@ const io = require("socket.io")(server, {
 });
 
 const util = require("util");
+app.use(express.static(path.join(__dirname, "../")));
 
 // Get PORT from env variable else assign 3000 for development
 const PORT = process.env.PORT || 3000;
